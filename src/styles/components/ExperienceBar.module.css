@@ -1,0 +1,34 @@
+.experienceBar {
+    display: flex;
+    align-items: center;
+}
+
+.experienceBar span {
+    font-size: 1rem;
+}
+
+/* primeira div filho do experienceBar*/
+.experienceBar > div {
+    flex: 1;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--gray-line);
+    margin: 0 1.5rem;
+    position: relative;
+}
+
+/* primeira div filho da div */
+.experienceBar > div > div {
+    height: 4px;
+    border-radius: 4px;
+    background: var(--green);
+}
+
+/* a classe do span */
+span.currentExperience {
+    position: absolute;
+    top: 12px;
+    /* para o eixo da palavra 300 xp fica no eixo dos 50% */
+    /* translate no eixo x de -50% */
+    transform: translateX(-50%);
+}

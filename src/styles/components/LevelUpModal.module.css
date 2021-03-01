@@ -1,0 +1,58 @@
+.overlay {
+    background: rgba(242, 243, 245, 0.8);
+    position: fixed;
+    /* quero que ocupe a tela inteira */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: var(--white);
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem 3rem;
+    border-radius: 5px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    /* por que quero que o botão de fechar fique como position absolute, então por volta uso o position relative */
+    position: relative;
+}
+
+.container header {
+    font-size: 8.75rem;
+    font-weight: 600;
+    color: var(--blue);
+    background: url('/icons/levelUp.svg') no-repeat center;
+    /* a imagem cobre o container inteiro, tanto em altura como em largura */
+    /* background-size: contain; */
+}
+
+.container strong {
+    font-size: 2.25rem;
+    color: var(--title);
+}
+
+.container p {
+    font-size: 1.25rem;
+    color: var(--text);
+    margin-top: 0.25rem;
+}
+
+.container button {
+    position: absolute;
+    /* right: 0.5rem; */
+    right: 1rem;
+    /* top: 0.5rem; */
+    top: 1rem;
+    background: transparent;
+    border: 0;
+    /* para o outline ficar proporcional, pq o tamanho da imagem é menor que o font-size do botão, colocar o font-size igual a 0px */
+    font-size: 0px;
+}
+
