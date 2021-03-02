@@ -27,7 +27,7 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
 
     // como o tempo vai regredindo em segundos, o useState tem que ser em segundos, então vai ser 25min*60seg
     // o setTime é a função para caso eu precise alterar o valor do time que é 1500seg
-    const [time, setTime] = useState(0.1 * 60);
+    const [time, setTime] = useState(25 * 60);
     // estado que armazena se o countdown está ativo ou não (se está acontecendo ou se está pausado/parado que é como ele inicia (em false))
     const [isActive, setIsActive] = useState(false);
     // ele vai iniciar como false por que no início ele não vai finalizado
@@ -51,7 +51,7 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
         setIsActive(false);
         // para voltar para o estado inicial (com o botão de iniciar ciclo e o valor do countdown)
         setHasFinished(false);
-        setTime(0.1 * 60);
+        setTime(25 * 60);
     }
 
     // o useEffect recebe dois parâmetros, o primeiro parâmetro é o que eu quero executar e sempre vai ser uma função, o segundo parâmetro é quando eu quero executar a função, e é chamado de array de dependências
