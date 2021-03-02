@@ -44,19 +44,16 @@ export const ChallengesContext = createContext({} as ChallengesContextData);
 
 // o children é do tipo ChallengesProviderProps que declarei em cima
 // todas as propriedades que não são a children e veio dos cookies, vou utilizar um operador do js chamado rest operation
-// o rest é um obejto que dentro dele tem o level, currentExperience e challengesCompleted
+// o rest é um objeto que dentro dele tem o level, currentExperience e challengesCompleted
 export function ChallengesProvider({ children, ...rest }: ChallengesProviderProps) {
 
     // foi acrescentado ao valor inicial do level, currentExperience e challengesCompleted as propriedades que estão armazenando os valores nos cookies
-    // ela diz que: se o rest.level não existir (que é justamente o valor armazenado) começar com 1 (mesma coisa para os outros dois)
-
-    const [level, setLevel] = useState(rest.level ?? 1);
-
-    // a experiência do usuário sempre vai começar em 0
-    const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0);
-
-    // o quanto de desafio o usuário já completou (também começa em 0)
-    const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0);
+    // ela diz que: se o rest.level não existir (que é justamente o valor armazenado) começar com 1 (mesma coisa para os outros dois - ex: rest.level ?? 1)
+    // a condição que foi citada acima foi tirada para resolver o bug de inicialização e ficou so o rest. e a variável
+    // essa condição foi colocada dentro do método getServerSideProps no index.tsx, pois o getServerSideProps roda antes de carregar a página e o Next tenta entregar a pagina pronta, como é a primeira vez, não existe os cookies, então eles ficam: level = NaN e currentExperience = NaN, ai ele vai pra experience bar e tenta carregar aquele componente, usando width = NaN% (por isso, assim que inciava a aplicação (sem cookie salvo),a barra verde ficava toda preenchida e só depois de dar f5 ela normalizava)
+    const [level, setLevel] = useState(rest.level);
+    const [currentExperience, setCurrentExperience] = useState(rest.currentExperience);
+    const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted);
 
     // estado para armazenar o challenge, que vai iniciar como nulo
     const [activeChallenge, setActiveChallenge] = useState(null);

@@ -70,10 +70,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return {
     // como esses dados vem dos cookies como string, vamos converter de novo para number
     // pode converter para number usando o sinal + na frente, ex: level: +level
+    // a condição level ?? 1 diz que se não tiver nenhum valor armazenado no cookie, começar com 1, mesma coisa no restante
     props: {
-      level: Number(level),
-      currentExperience: Number(currentExperience),
-      challengesCompleted: Number(challengesCompleted)
+      level: Number(level ?? 1),
+      currentExperience: Number(currentExperience ?? 0),
+      challengesCompleted: Number(challengesCompleted ?? 0)
     }
   }
 }
